@@ -27,7 +27,8 @@ public class ProductManager implements ProductService{
 	@Override
 	public DataResult<List<Product>> getAll() {
 		
-		return new SuccessDataResult<List<Product>>(this.productDao.findAll(),"data listelendi");
+		return new SuccessDataResult<List<Product>>
+		(this.productDao.findAll(),"data listelendi");
 		
 	}
 
@@ -35,6 +36,49 @@ public class ProductManager implements ProductService{
 	public Result add(Product product) {
 		this.productDao.save(product);
 		return new SuccessResult("ürün eklendi");
+	}
+
+	@Override
+	public DataResult<Product> getByProductName(String productName) {
+		return new SuccessDataResult<Product>
+		(this.productDao.getByProductName(productName),"data listelendi");
+	}
+
+	@Override
+	public DataResult<Product> getByProductNameAndCategory(String productName, int categoryId) {
+		
+		return new SuccessDataResult<Product>
+		(this.productDao.getByProductNameAndCategory(productName,categoryId),"data listelendi");
+	}
+
+	@Override
+	public DataResult<List<Product>> getByProductNameOrCategory(String productName, int categoryId) {
+		return new SuccessDataResult<List<Product>>
+		(this.productDao.getByProductNameOrCategory(productName, categoryId),"data listelendi");
+	}
+
+	@Override
+	public DataResult<List<Product>> getByCategoryIn(List<Integer> categories) {
+		return new SuccessDataResult<List<Product>>
+		(this.productDao.getByCategoryIn(categories),"data listelendi");
+	}
+
+	@Override
+	public DataResult<List<Product>> getByProductNameContains(String productName) {
+		return new SuccessDataResult<List<Product>>
+		(this.productDao.getByProductNameContains(productName),"data listelendi");
+	}
+
+	@Override
+	public DataResult<List<Product>> getByProductNameStartsWith(String productName) {
+		return new SuccessDataResult<List<Product>>
+		(this.productDao.getByProductNameStartsWith(productName),"data listelendi");
+	}
+
+	@Override
+	public DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId) {
+		return new SuccessDataResult<List<Product>>
+		(this.productDao.getByNameAndCategory(productName, categoryId),"data listelendi");
 	}
 
 }
