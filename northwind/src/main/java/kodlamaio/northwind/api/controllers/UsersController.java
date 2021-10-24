@@ -28,4 +28,7 @@ public class UsersController {
 		
 		return ResponseEntity.ok(this.userService.add(user)) ;
 	}
+	public ErrorDataResult<object> handleValidationException(){
+		
+	}
 }
